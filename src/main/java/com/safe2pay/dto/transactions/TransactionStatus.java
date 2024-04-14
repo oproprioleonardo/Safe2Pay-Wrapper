@@ -1,8 +1,10 @@
 package com.safe2pay.dto.transactions;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TransactionStatus {
 
     @JsonProperty("Id")

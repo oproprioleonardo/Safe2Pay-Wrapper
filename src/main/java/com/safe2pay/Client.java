@@ -61,11 +61,12 @@ public final class Client {
                 response.append(inputLine);
             }
             in.close();
+
             final JsonNode jsonNode = new ObjectMapper().readTree(response.toString());
             final boolean hasError = jsonNode.get("HasError").asBoolean();
             if (hasError) {
                 final ResponseSafe2Pay<T> responseSafe2Pay = new ResponseSafe2Pay<>();
-                responseSafe2Pay.setHasError(hasError);
+                responseSafe2Pay.setHasError(true);
                 responseSafe2Pay.setError(jsonNode.get("Error").asText());
                 responseSafe2Pay.setErrorCode(jsonNode.get("ErrorCode").asInt());
                 return responseSafe2Pay;
@@ -73,12 +74,16 @@ public final class Client {
             final String responseDetailJson = jsonNode.get("ResponseDetail").toString();
             final ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
+            mapper.configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false);
+            mapper.configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, false);
             final T responseDetail = new ObjectMapper().readValue(responseDetailJson, clazz);
             final ResponseSafe2Pay<T> responseSafe2Pay = new ResponseSafe2Pay<>();
-            responseSafe2Pay.setHasError(hasError);
+            responseSafe2Pay.setHasError(false);
             responseSafe2Pay.setResponseDetail(responseDetail);
             return responseSafe2Pay;
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }

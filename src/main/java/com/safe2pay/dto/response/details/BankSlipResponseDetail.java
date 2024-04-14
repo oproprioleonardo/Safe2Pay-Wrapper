@@ -1,5 +1,6 @@
 package com.safe2pay.dto.response.details;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -8,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BankSlipResponseDetail extends ResponseDetail {
 
     @JsonProperty("BankSlipNumber")

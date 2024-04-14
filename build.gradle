@@ -25,7 +25,6 @@ shadowJar {
     archiveVersion.set('1.0')
 }
 
-
 test {
     useJUnitPlatform()
 }

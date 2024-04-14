@@ -1,10 +1,11 @@
 package com.safe2pay.dto.response.details;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
-@JsonIgnoreType
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CreditCardResponseDetail extends ResponseDetail {
 
     @JsonProperty("Tid")
@@ -60,7 +61,8 @@ public class CreditCardResponseDetail extends ResponseDetail {
         this.creditCard = creditCard;
     }
 
-    public record CreditCard (
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public record CreditCard(
             @JsonProperty("CardNumber")
             String cardNumber,
             @JsonProperty("Brand")

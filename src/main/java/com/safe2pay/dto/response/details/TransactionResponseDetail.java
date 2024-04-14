@@ -1,5 +1,6 @@
 package com.safe2pay.dto.response.details;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.safe2pay.dto.general.ProductS2P;
 import com.safe2pay.dto.general.address.AddressS2P;
@@ -13,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TransactionResponseDetail {
 
     @JsonProperty("IdTransaction")

@@ -63,6 +63,13 @@ public final class Client {
             in.close();
             final JsonNode jsonNode = new ObjectMapper().readTree(response.toString());
             final boolean hasError = jsonNode.get("HasError").asBoolean();
+            if (hasError) {
+                final ResponseSafe2Pay<T> responseSafe2Pay = new ResponseSafe2Pay<>();
+                responseSafe2Pay.setHasError(hasError);
+                responseSafe2Pay.setError(jsonNode.get("Error").asText());
+                responseSafe2Pay.setErrorCode(jsonNode.get("ErrorCode").asInt());
+                return responseSafe2Pay;
+            }
             final String responseDetailJson = jsonNode.get("ResponseDetail").toString();
             final ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

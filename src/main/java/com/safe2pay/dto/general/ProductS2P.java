@@ -16,6 +16,9 @@ public class ProductS2P {
     @JsonProperty("Quantity")
     private double quantity;
 
+    public ProductS2P() {
+    }
+
     @Builder
     public ProductS2P(String code, String Description, double UnitPrice, double Quantity) {
         this.code = code;

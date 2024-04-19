@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TransactionAddressS2P {
+public class SimpleAddressS2P {
 
     @JsonProperty("ZipCode")
     private String zipCode;
@@ -22,11 +22,11 @@ public class TransactionAddressS2P {
     @JsonProperty("Complement")
     private String complement;
 
-    public TransactionAddressS2P() {
+    public SimpleAddressS2P() {
     }
 
     @Builder
-    public TransactionAddressS2P(String zipCode, String street, String number, String district, String city, String state, String complement) {
+    public SimpleAddressS2P(String zipCode, String street, String number, String district, String city, String state, String complement) {
         this.zipCode = zipCode;
         this.street = street;
         this.number = number;

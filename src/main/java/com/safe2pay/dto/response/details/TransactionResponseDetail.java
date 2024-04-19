@@ -3,7 +3,7 @@ package com.safe2pay.dto.response.details;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.safe2pay.dto.general.ProductS2P;
-import com.safe2pay.dto.general.address.AddressS2P;
+import com.safe2pay.dto.general.address.TransactionAddressS2P;
 import com.safe2pay.dto.general.customer.CustomerS2P;
 import lombok.*;
 
@@ -52,7 +52,7 @@ public class TransactionResponseDetail {
     @JsonProperty("Customer")
     private CustomerS2P customer;
     @JsonProperty("Address")
-    private AddressS2P address;
+    private TransactionAddressS2P address;
     @JsonProperty("Products")
     private List<ProductS2P> products;
     @JsonProperty("PaymentObject")

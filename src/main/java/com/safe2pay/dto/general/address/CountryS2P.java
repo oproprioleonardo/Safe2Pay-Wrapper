@@ -1,8 +1,10 @@
 package com.safe2pay.dto.general.address;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CountryS2P {
 
     @JsonProperty("Id")
